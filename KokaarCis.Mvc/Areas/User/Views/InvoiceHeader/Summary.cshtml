@@ -1,0 +1,22 @@
+﻿@model InvoiceHeaderViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Visualisation d'une facture";
+}
+
+<div class="row p-1 bg-info bg-gradient">
+    <h4 class="text-white"><partial name="_IconHeader" />&nbsp;@title</h4>
+</div>
+<div id="parent-view">
+    @await Html.PartialAsync("_Header", Model)
+</div>
+<div id="modal-view">
+    @await Html.PartialAsync("_Modal", Model)
+</div>
+
+@section Scripts{
+    <script src="~/js/invoiceHeader.js"></script>
+}
+
+

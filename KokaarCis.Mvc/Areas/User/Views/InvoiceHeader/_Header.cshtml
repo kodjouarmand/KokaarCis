@@ -1,0 +1,197 @@
+﻿@model InvoiceHeaderViewModel
+
+<form method="post">
+    <div class="row ">
+        <input type="hidden" asp-for="InvoiceHeader.Id" />
+        <div class="row">
+            <div class="input-group-sm col-7 pt-4">
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Numéro
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="InvoiceHeader.Number" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Date
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="InvoiceHeader.Date" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Client
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="InvoiceHeader.Customer.Name" class="form-control fw-bold" disabled />
+                    </div>
+                </div>
+                @if (Model.InvoiceHeader.BusinessPartner != null)
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Apporteur
+                        </div>
+                        <div class="input-group-sm col-6">
+                            <input asp-for="InvoiceHeader.BusinessPartner.Name" class="form-control" disabled />
+                        </div>
+                    </div>
+                }
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Statut
+                    </div>
+                    @if (Model.InvoiceHeader.Status == EnumHelper.ToString(StatusEnum.Unpaid))
+                    {
+                        <div class="input-group-sm col-3">
+                            <input asp-for="InvoiceHeader.Status" class="form-control bg-gradient text-white fw-bold" style="background-color:red" disabled />
+                        </div>
+                    }
+                    else if (Model.InvoiceHeader.Status == EnumHelper.ToString(StatusEnum.Paid))
+                    {
+                        <div class="input-group-sm col-3">
+                            <input asp-for="InvoiceHeader.Status" class="form-control bg-gradient text-white fw-bold" style="background-color:green" disabled />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="input-group-sm col-3">
+                            <input asp-for="InvoiceHeader.Status" class="form-control bg-gradient text-white fw-bold" style="background-color: lightseagreen" disabled />
+                        </div>
+                    }
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Frais de morcellement
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="InvoiceHeader.ParcellingCosts" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Frais de dossier technique
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="InvoiceHeader.TechnicalFileCosts" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Frais de bornage
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="InvoiceHeader.BoundaryCosts" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Type de commission
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="InvoiceHeader.CommissionType" class="form-control" disabled />
+                    </div>
+                </div>
+                @if (Model.InvoiceHeader.CommissionType != EnumHelper.ToString(CommissionTypeEnum.None))
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Valeur commission
+                        </div>
+                        <div class="input-group-sm col-3">
+                            <input asp-for="InvoiceHeader.CommissionUnitValue" class="form-control text-end" asp-format="{0:N0}" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Montant commission
+                        </div>
+                        <div class="input-group-sm col-3">
+                            <input asp-for="InvoiceHeader.CommissionToPay" class="form-control text-end bg-gradient fw-bold" style="background-color:silver" asp-format="{0:N0}" disabled />
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.InvoiceHeader.Comment))
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Commentaire
+                        </div>
+                        <div class="input-group-sm col-6">
+                            <textarea asp-for="InvoiceHeader.Comment" class="form-control" disabled></textarea>
+                        </div>
+                    </div>
+                }
+                <hr/>
+                <div class="form-group row pt-1 pb-1">
+                    <div class="d-inline-block">
+                        <div class="row">
+                            <div class="input-group-sm col">
+                                @if (Model.InvoiceHeader.Status == EnumHelper.ToString(KokaarCis.Utility.Enum.StatusEnum.Unpaid))
+                                {
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit", "InvoiceHeader", new { id = @Model.InvoiceHeader.Id, returnToHeaderView = true }, Context.Request.Scheme)','Modification d\'une facture')" class="btn btn-sm btn-success form-control" style="cursor:pointer">
+                                        <partial name="_IconEdit" />&nbsp; Modifier
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-light form-control" style="cursor:pointer">
+                                        <partial name="_IconEdit" />&nbsp; Modifier
+                                    </a>
+                                }
+                            </div>
+                            <div class="input-group-sm col">
+                                @if (Model.InvoiceHeader.Status == EnumHelper.ToString(KokaarCis.Utility.Enum.StatusEnum.Unpaid))
+                                {
+                                    <a onclick="showInPopup('@Url.Action("Cancel", "InvoiceHeader", new { id = @Model.InvoiceHeader.Id, returnToHeaderView = true }, Context.Request.Scheme)','Annulation d\'une facture')" class="btn btn-sm btn-danger form-control" style="cursor:pointer">
+                                        <partial name="_IconCancel" />&nbsp; Annuler
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-light form-control" style="cursor:pointer">
+                                        <partial name="_IconCancel" />&nbsp; Annuler
+                                    </a>
+                                }
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Print" asp-route-id="@Model.InvoiceHeader.Id" class="btn btn-sm btn-info form-control">
+                                    <partial name="_IconPrint" />&nbsp;Imprimer
+                                </a>
+                            </div>
+                            @if (Model.ReturnToViewCommission == true)
+                            {
+                                <div class="input-group-sm col">
+                                    <a asp-controller="Commission" asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                        <partial name="_IconReturn" />&nbsp;Quitter
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="input-group-sm col">
+                                    <a asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                        <partial name="_IconReturn" />&nbsp;Quitter
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group-sm col-5 pt-4">
+                <div id="detail-view">
+                    @await Html.PartialAsync("_Detail", Model)
+                </div>
+                <hr />
+                <div id="footer-view">
+                    @await Html.PartialAsync("_Footer", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

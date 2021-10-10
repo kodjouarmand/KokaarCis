@@ -1,0 +1,62 @@
+﻿@model BusinessPartnerViewModel
+
+<form method="post">
+    <div class="row ">
+        <input type="hidden" asp-for="BusinessPartner.Id" />
+        <div class="row">
+            <div class="input-group-sm col-7 pt-4">
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Référence
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="BusinessPartner.Reference" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Nom
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="BusinessPartner.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        N° de téléphone
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="BusinessPartner.PhoneNumber" class="form-control" disabled />
+                    </div>
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.BusinessPartner.Comment))
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Commentaire
+                        </div>
+                        <div class="input-group-sm col-6">
+                            <textarea asp-for="BusinessPartner.Comment" class="form-control" disabled></textarea>
+                        </div>
+                    </div>
+                }
+                <div class="form-group row pt-1 pb-1">
+                    <div class="d-inline-block">
+                        <div class="row">
+                            <div class="input-group-sm col">
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","BusinessPartner",new {id=@Model.BusinessPartner.Id, returnToDetailView = true},Context.Request.Scheme)','Modification d\'un apporteur d\'affaire')" class="btn btn-sm btn-success form-control" style="cursor:pointer">
+                                    <partial name="_IconEdit" />&nbsp; Modifier
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                    <partial name="_IconReturn" />&nbsp;Quitter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

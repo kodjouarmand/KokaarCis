@@ -1,0 +1,51 @@
+﻿@model LocalityViewModel
+
+<form method="post">
+    <div class="row ">
+        <input type="hidden" asp-for="Locality.Id" />
+        <div class="row">
+            <div class="input-group-sm col-6 pt-4">
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Nom
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="Locality.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Ville
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="Locality.City.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Description
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <textarea asp-for="Locality.Description" class="form-control" disabled></textarea>
+                    </div>
+                </div>
+                <div class="form-group row pt-2 pb-2">
+                    <div class="input-group-sm col-6 offset-4">
+                        <div class="row">
+                            <div class="input-group-sm col">
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Locality",new {id=@Model.Locality.Id, returnToDetailView = true},Context.Request.Scheme)','Modification d\'une localité')" class="btn btn-sm btn-success form-control" style="cursor:pointer">
+                                    <partial name="_IconEdit" />&nbsp; Modifier
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                    <partial name="_IconReturn" />&nbsp;Quitter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,130 @@
+﻿@model CommissionPaymentViewModel
+
+<form method="post">
+    <div class="row ">
+        <input type="hidden" asp-for="CommissionPayment.Id" />
+        <div class="row">
+            <div class="input-group-sm col-7 pt-4">
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Référence
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.Number" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Date
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.Date" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Nom du client
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="CommissionPayment.InvoiceHeader.Customer.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Contact du client
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="CommissionPayment.InvoiceHeader.Customer.PhoneNumber" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Montant payé
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.AmountPaid" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Mode de paiement
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.PaymentMode.DisplayText" class="form-control" disabled />
+                    </div>
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.CommissionPayment.TransactionNumber))
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            N° de transaction
+                        </div>
+                        <div class="input-group-sm col-6">
+                            <input asp-for="CommissionPayment.TransactionNumber" class="form-control" disabled />
+                        </div>
+                    </div>
+                }
+                <hr />
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        N° de la facture
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.InvoiceHeader.Number" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Montant net à payer
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.InvoiceHeader.CommissionToPay" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Montant avancé
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.InvoiceHeader.CommissionPaid" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Montant restant à payer
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="CommissionPayment.InvoiceHeader.CommissionRemainingToPay" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group row pt-1 pb-1">
+                    <div class="d-inline-block">
+                        <div class="row">
+                            <div class="input-group-sm col">
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","CommissionPayment",new {id=@Model.CommissionPayment.Id, returnToDetailView = true},Context.Request.Scheme)','Modification d\'un paiement de commission')" class="btn btn-sm btn-success form-control" style="cursor:pointer">
+                                    <partial name="_IconEdit" />&nbsp; Modifier
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a onclick="showInPopup('@Url.Action("Cancel","CommissionPayment",new {id=@Model.CommissionPayment.Id, returnToDetailView = true},Context.Request.Scheme)','Annulation d\'un paiement de commission')" class="btn btn-sm btn-danger form-control" style="cursor:pointer">
+                                    <partial name="_IconCancel" />&nbsp; Annuler
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Print" asp-route-id="@Model.CommissionPayment.Id" class="btn btn-sm btn-info form-control">
+                                    <partial name="_IconPrint" />&nbsp;Imprimer
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                    <partial name="_IconReturn" />&nbsp;Quitter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

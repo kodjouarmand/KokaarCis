@@ -1,0 +1,75 @@
+﻿@model LandTitleViewModel
+
+<form method="post">
+    <div class="row ">
+        <input type="hidden" asp-for="LandTitle.Id" />
+        <div class="row">
+            <div class="input-group-sm col-6 pt-4">
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        N° du titre foncier
+                    </div>
+                    <div class="input-group-sm col-2">
+                        <input asp-for="LandTitle.Number" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Propriétaire
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="LandTitle.Owner" class="form-control text-capitalize" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Localité
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="LandTitle.Locality.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Superficie (en m²)
+                    </div>
+                    <div class="input-group-sm col-2">
+                        <input asp-for="LandTitle.Surface" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.LandTitle.Description))
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Description
+                        </div>
+                        <div class="input-group-sm col-6">
+                            <textarea asp-for="LandTitle.Description" class="form-control" disabled></textarea>
+                        </div>
+                    </div>
+                }
+                <div class="form-group row pt-2 pb-2">
+                    <div class="input-group-sm col-6 offset-4">
+                        <div class="row">
+                            <div class="input-group-sm col">
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","LandTitle",new {id=@Model.LandTitle.Id, returnToDetailView = true},Context.Request.Scheme)','Modification d\'un titre foncier')" class="btn btn-sm btn-success form-control" style="cursor:pointer">
+                                    <partial name="_IconEdit" />&nbsp; Modifier
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                    <partial name="_IconReturn" />&nbsp;Quitter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group-sm col-6 pt-4">
+                <div id="documents-view">
+                    @await Html.PartialAsync("_Documents", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

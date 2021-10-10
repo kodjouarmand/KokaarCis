@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation Layer", "1.Presentation Layer", "{D8FBE3A3-C798-4485-B0F6-016BEB1A6E27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Domain Layer", "0.Domain Layer", "{4FDFA9EB-F6CD-49B0-9679-61127EF65B3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Business Logic Layer", "2.Business Logic Layer", "{6A2DBC7D-B3F6-4537-A23F-3E9E297F31DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Data Access Layer", "3.Data Access Layer", "{3FD4FA0A-3F45-468E-8EDB-4AACC7FBCB6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Infrastructure Layer", "5.Infrastructure Layer", "{B95A922D-B54C-490D-8DE3-0E976872418A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Utility Layer", "6.Utility Layer", "{5CB329AD-0AB1-44CB-A000-C8A8F2E64CA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.Api", "KokaarCis.API\KokaarCis.Api.csproj", "{262AF373-E087-4A2D-BFE2-9A7F5C4BB65B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.Utility", "KokaarCis.Utility\KokaarCis.Utility.csproj", "{C179AA33-6901-46C5-A01B-1769F3A948C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.Infrastructure", "KokaarCis.Infrastructure\KokaarCis.Infrastructure.csproj", "{E4149EFD-8546-4C27-B73B-2196503EE5A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.DataAccess", "KokaarCis.DataAccess\KokaarCis.DataAccess.csproj", "{3A471F8D-FEB7-4ED8-9753-F9EA000BDA95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.BusinessLogic", "KokaarCis.BusinessLogic\KokaarCis.BusinessLogic.csproj", "{70604D23-23C2-47B5-B9FD-16BFFB6DE93C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.Mvc", "KokaarCis.Mvc\KokaarCis.Mvc.csproj", "{B06C4452-8410-4CE0-B044-462C7C62FE81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokaarCis.Domain", "KokaarCis.Domain\KokaarCis.Domain.csproj", "{1F003B8A-8571-4761-8EC6-3A82B2C50763}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.API Layer", "7.API Layer", "{29F2EEA5-9E72-4397-817A-2F5C25A9F172}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{262AF373-E087-4A2D-BFE2-9A7F5C4BB65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262AF373-E087-4A2D-BFE2-9A7F5C4BB65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262AF373-E087-4A2D-BFE2-9A7F5C4BB65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262AF373-E087-4A2D-BFE2-9A7F5C4BB65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C179AA33-6901-46C5-A01B-1769F3A948C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C179AA33-6901-46C5-A01B-1769F3A948C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C179AA33-6901-46C5-A01B-1769F3A948C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C179AA33-6901-46C5-A01B-1769F3A948C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4149EFD-8546-4C27-B73B-2196503EE5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4149EFD-8546-4C27-B73B-2196503EE5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4149EFD-8546-4C27-B73B-2196503EE5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4149EFD-8546-4C27-B73B-2196503EE5A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A471F8D-FEB7-4ED8-9753-F9EA000BDA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A471F8D-FEB7-4ED8-9753-F9EA000BDA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A471F8D-FEB7-4ED8-9753-F9EA000BDA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A471F8D-FEB7-4ED8-9753-F9EA000BDA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70604D23-23C2-47B5-B9FD-16BFFB6DE93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70604D23-23C2-47B5-B9FD-16BFFB6DE93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70604D23-23C2-47B5-B9FD-16BFFB6DE93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70604D23-23C2-47B5-B9FD-16BFFB6DE93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B06C4452-8410-4CE0-B044-462C7C62FE81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06C4452-8410-4CE0-B044-462C7C62FE81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06C4452-8410-4CE0-B044-462C7C62FE81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06C4452-8410-4CE0-B044-462C7C62FE81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F003B8A-8571-4761-8EC6-3A82B2C50763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F003B8A-8571-4761-8EC6-3A82B2C50763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F003B8A-8571-4761-8EC6-3A82B2C50763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F003B8A-8571-4761-8EC6-3A82B2C50763}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{262AF373-E087-4A2D-BFE2-9A7F5C4BB65B} = {29F2EEA5-9E72-4397-817A-2F5C25A9F172}
+		{C179AA33-6901-46C5-A01B-1769F3A948C5} = {5CB329AD-0AB1-44CB-A000-C8A8F2E64CA4}
+		{E4149EFD-8546-4C27-B73B-2196503EE5A7} = {B95A922D-B54C-490D-8DE3-0E976872418A}
+		{3A471F8D-FEB7-4ED8-9753-F9EA000BDA95} = {3FD4FA0A-3F45-468E-8EDB-4AACC7FBCB6C}
+		{70604D23-23C2-47B5-B9FD-16BFFB6DE93C} = {6A2DBC7D-B3F6-4537-A23F-3E9E297F31DA}
+		{B06C4452-8410-4CE0-B044-462C7C62FE81} = {D8FBE3A3-C798-4485-B0F6-016BEB1A6E27}
+		{1F003B8A-8571-4761-8EC6-3A82B2C50763} = {4FDFA9EB-F6CD-49B0-9679-61127EF65B3D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D26028F2-2AF2-4296-8ED8-CDAF31B54AFB}
+	EndGlobalSection
+EndGlobal

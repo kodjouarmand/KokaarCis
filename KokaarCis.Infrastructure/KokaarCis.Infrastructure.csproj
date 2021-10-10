@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KokaarCis.DataAccess\KokaarCis.DataAccess.csproj" />
+    <ProjectReference Include="..\KokaarCis.Domain\KokaarCis.Domain.csproj" />
+    <ProjectReference Include="..\KokaarCis.Utility\KokaarCis.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

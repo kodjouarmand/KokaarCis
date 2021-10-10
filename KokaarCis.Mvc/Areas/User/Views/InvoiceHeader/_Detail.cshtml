@@ -1,0 +1,42 @@
+﻿@model InvoiceHeaderViewModel
+
+<h5 class="d-flex justify-content-between align-items-center">
+    <span class="text-info">Liste des parcelles achetées</span>
+</h5>
+<ul class="list-group mb-2 mr-2">
+    @foreach (var invoiceDetail in Model.InvoiceDetails)
+    {
+        <li class="list-group-item d-flex justify-content-between">
+            <div>
+                <h6 class="my-0 text-black">
+                    <small>@invoiceDetail.Parcel.DisplayText</small>
+                </h6>
+                <small class="text-muted">
+                    Superficie : @invoiceDetail.Surface.GetValueOrDefault().ToString("N0") m² -
+                    Prix du m² : @invoiceDetail.UnitPrice.GetValueOrDefault().ToString("N0") -
+                    Total : @invoiceDetail.Total.GetValueOrDefault().ToString("N0")
+                </small>
+            </div>
+            @if (Model.InvoiceHeader.Status == EnumHelper.ToString(KokaarCis.Utility.Enum.StatusEnum.Unpaid))
+            {
+                <span>
+                    <a onclick="showInPopup('@Url.Action("AddOrEditDetail","InvoiceHeader",new {id=invoiceDetail.Id, invoiceHeaderId=@Model.InvoiceHeader.Id},Context.Request.Scheme)','Modification d\'un lot vendue')" class="btn btn-sm btn-success text-white" style="cursor:pointer">
+                        <partial name="_IconEdit" />
+                    </a>
+
+                    <a onclick=DeleteInvoiceDetail("/User/InvoiceHeader/DeleteInvoiceDetail/@invoiceDetail.Id") class="btn btn-sm btn-danger text-white" style="cursor:pointer">
+                        <partial name="_IconDelete" />
+                    </a>
+                </span>
+            }
+        </li>
+    }
+    @if (Model.InvoiceHeader.Status == EnumHelper.ToString(KokaarCis.Utility.Enum.StatusEnum.Unpaid))
+    {
+        <li class="list-group-item d-flex justify-content-between bg-light">
+            <a onclick="showInPopup('@Url.Action("AddOrEditDetail", "InvoiceHeader", new { id=0, invoiceHeaderId=@Model.InvoiceHeader.Id }, Context.Request.Scheme)','Ajout d\'un lot vendue')" class="btn btn-sm btn-success text-white" style="cursor:pointer">
+                <partial name="_IconCreate" />
+            </a>
+        </li>
+    }
+</ul>

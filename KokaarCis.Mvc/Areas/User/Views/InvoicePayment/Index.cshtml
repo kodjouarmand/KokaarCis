@@ -1,0 +1,20 @@
+﻿@model PagedResult<InvoicePaymentDto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row p-1 bg-info bg-gradient">
+    <h4 class="text-white"><partial name="_IconHeader" />&nbsp; Liste des règlements de facture</h4>
+</div>
+<div id="parent-view">
+    @await Html.PartialAsync("_List", Model)
+</div>
+<div id="modal-view">
+    @await Html.PartialAsync("_Modal", Model)
+</div>
+
+@section Scripts{
+
+    <script src="~/js/invoicePayment.js"></script>
+}

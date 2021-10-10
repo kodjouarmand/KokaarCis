@@ -1,0 +1,107 @@
+﻿@model CustomerViewModel
+
+<form method="post">
+    <div class="row ">
+        <input type="hidden" asp-for="Customer.Id" />
+        <div class="row">
+            <div class="input-group-sm col-7 pt-4">
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Référence
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="Customer.Reference" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Nom
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="Customer.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Type de pièce d'identité
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="Customer.IdentityDocumentType.Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Numéro de la pièce d'identité
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="Customer.IdentityDocumentNumber" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        N° de téléphone
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="Customer.PhoneNumber" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Email
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="Customer.Email" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Adresse
+                    </div>
+                    <div class="input-group-sm col-6">
+                        <input asp-for="Customer.Address" class="form-control" disabled />
+                    </div>
+                </div>
+                @*<div class="form-group row pt-1">
+                    <div class="input-group-sm col-4">
+                        Crédit maximum authorisé
+                    </div>
+                    <div class="input-group-sm col-3">
+                        <input asp-for="Customer.MaximumCreditAuthorized" class="form-control text-end" asp-format="{0:N0}" disabled />
+                    </div>
+                </div>*@
+                @if (!string.IsNullOrWhiteSpace(Model.Customer.Comment))
+                {
+                    <div class="form-group row pt-1">
+                        <div class="input-group-sm col-4">
+                            Commentaire
+                        </div>
+                        <div class="input-group-sm col-6">
+                            <textarea asp-for="Customer.Comment" class="form-control" disabled></textarea>
+                        </div>
+                    </div>
+                }
+                <div class="form-group row pt-1 pb-1">
+                    <div class="d-inline-block">
+                        <div class="row">
+                            <div class="input-group-sm col">
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Customer",new {id=@Model.Customer.Id, returnToDetailView = true},Context.Request.Scheme)','Modification d\'un client')" class="btn btn-sm btn-success form-control" style="cursor:pointer">
+                                    <partial name="_IconEdit" />&nbsp; Modifier
+                                </a>
+                            </div>
+                            <div class="input-group-sm col">
+                                <a asp-action="Index" class="btn btn-sm btn-warning form-control">
+                                    <partial name="_IconReturn" />&nbsp;Quitter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group-sm col-5 pt-4">
+                <div id="documents-view">
+                    @await Html.PartialAsync("_Documents", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

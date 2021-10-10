@@ -1,0 +1,12 @@
+﻿@model PagedResult<InvoiceHeaderDto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row p-1 bg-info bg-gradient">
+    <h4 class="text-white"><partial name="_IconHeader" />&nbsp; Liste des commissions</h4>
+</div>
+<div id="parent-view">
+    @await Html.PartialAsync("_List", Model)
+</div>
